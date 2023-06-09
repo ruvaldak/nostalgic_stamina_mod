@@ -1,10 +1,7 @@
 package realisticstamina.rstamina;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -36,17 +33,6 @@ public class RStaminaMod implements ModInitializer {
 			ServerState serverState = ServerState.getServerState(handler.player.world.getServer());
 			PlayerState playerState = ServerState.getPlayerState(handler.player);
 
-		});
-
-		ClientTickEvents.START_CLIENT_TICK.register((client) -> {
-			if (client.world != null) {
-
-
-
-				if (client.world.isClient()) {
-					ClientPlayNetworking.send(NetworkingPackets.UPDATE_STAMINA_C2S_PACKET_ID, PacketByteBufs.create());
-				}
-			}
 		});
 
 	}
