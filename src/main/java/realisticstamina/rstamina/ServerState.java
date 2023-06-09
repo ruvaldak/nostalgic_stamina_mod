@@ -26,6 +26,8 @@ public class ServerState extends PersistentState {
             playerStateNbt.putInt("testplayerdata", playerSate.testplayerdata);
             playerStateNbt.putDouble("stamina", playerSate.stamina);
             playerStateNbt.putDouble("maxStamina", playerSate.maxStamina);
+            playerStateNbt.putDouble("totalStamina", playerSate.totalStamina);
+            playerStateNbt.putDouble("energy", playerSate.energy);
 
             playersNbtCompound.put(String.valueOf(UUID), playerStateNbt);
         });
@@ -46,6 +48,8 @@ public class ServerState extends PersistentState {
             playerState.testplayerdata = playersTag.getCompound(key).getInt("testplayerdata");
             playerState.stamina = playersTag.getCompound(key).getDouble("stamina");
             playerState.maxStamina = playersTag.getCompound(key).getDouble("maxStamina");
+            playerState.totalStamina = playersTag.getCompound(key).getDouble("totalStamina");
+            playerState.energy = playersTag.getCompound(key).getDouble("energy");
 
             UUID uuid = UUID.fromString(key);
             serverState.players.put(uuid, playerState);

@@ -9,6 +9,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import realisticstamina.rstamina.PlayerState;
+import realisticstamina.rstamina.RStaminaMod;
 import realisticstamina.rstamina.ServerState;
 
 public class UpdateStaminaC2SPacket {
@@ -31,6 +32,9 @@ public class UpdateStaminaC2SPacket {
             if (!player.isCreative() && !player.isSpectator()) {
 
                 playerstate.stamina -= 0.25;
+                playerstate.energy -= 0.004;
+                RStaminaMod.LOGGER.info("Energy: " + playerstate.energy);
+                playerstate.maxStamina = (playerstate.totalStamina * (playerstate.energy / 100));
                 serverState.markDirty();
             }
 

@@ -18,6 +18,8 @@ public class NetworkingPackets {
     //C2S
     public static final Identifier UPDATE_STAMINA_C2S_PACKET_ID = new Identifier(RStaminaMod.modid, "update_stamina_c2s_packet");
     public static final Identifier REQUEST_PLAYERSTATE_C2S_PACKET_ID = new Identifier(RStaminaMod.modid, "request_playerstate_c2s_packet");
+    public static final Identifier PLAYER_SLEEP_C2S_PACKET_ID = new Identifier(RStaminaMod.modid, "player_sleep_c2s_packet");
+    public static final Identifier RESET_PLAYERSTATE_C2S_PACKET_ID = new Identifier(RStaminaMod.modid, "reset_playerstate_c2s_packet");
 
     //S2C test
     public static final Identifier TEST_S2C_PACKET_ID = new Identifier(RStaminaMod.modid, "test_s2c_packet");
@@ -34,6 +36,8 @@ public class NetworkingPackets {
 
         ServerPlayNetworking.registerGlobalReceiver(UPDATE_STAMINA_C2S_PACKET_ID, UpdateStaminaC2SPacket::receive);
         ServerPlayNetworking.registerGlobalReceiver(REQUEST_PLAYERSTATE_C2S_PACKET_ID, RequestPlayerStateC2SPacket::receive);
+        ServerPlayNetworking.registerGlobalReceiver(PLAYER_SLEEP_C2S_PACKET_ID, PlayerSleepC2SPacket::receive);
+        ServerPlayNetworking.registerGlobalReceiver(RESET_PLAYERSTATE_C2S_PACKET_ID, ResetPlayerStateC2SPacket::receive);
     }
 
     public static void registerS2CPackets() {
@@ -60,10 +64,15 @@ public class NetworkingPackets {
         ClientPlayNetworking.registerGlobalReceiver(SEND_PLAYERSTATE_S2C_PACKET_ID, (client, handler, buf, responseSender) -> {
             double stamina = buf.readDouble();
             double maxStamina = buf.readDouble();
+            double energy = buf.readDouble();
+            double totalStamina = buf.readDouble();
             client.execute(() -> {
 
                 RStaminaClient.clientStoredStamina = stamina;
                 RStaminaClient.clientStoredMaxStamina = maxStamina;
+                RStaminaClient.clientStoredEnergy = energy;
+                RStaminaClient.clientStoredTotalStamina = totalStamina;
+                //RStaminaMod.LOGGER.info("etset: " + totalStamina);
 
             });
         });

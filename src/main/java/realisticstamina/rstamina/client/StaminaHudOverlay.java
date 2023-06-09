@@ -34,9 +34,9 @@ public class StaminaHudOverlay implements HudRenderCallback {
 
             TextRenderer textRenderer = client.textRenderer;
 
-            if ((Math.round(RStaminaClient.clientStoredStamina)) > 24.0 && (Math.round(RStaminaClient.clientStoredStamina)) == 64) {
-                textRenderer.drawWithShadow(matrixStack, Text.literal("§2Stamina: §a" + (Math.round(RStaminaClient.clientStoredStamina)) + "§7/" + (Math.round(RStaminaClient.clientStoredMaxStamina))), x, y, 16777215);
-            } else if ((Math.round(RStaminaClient.clientStoredStamina)) >= 24.0 && (Math.round(RStaminaClient.clientStoredStamina)) < 64) {
+            if ((Math.round(RStaminaClient.clientStoredStamina)) > 24.0 && (Math.round(RStaminaClient.clientStoredStamina)) == (Math.round(RStaminaClient.clientStoredMaxStamina))) {
+                textRenderer.drawWithShadow(matrixStack, Text.literal("§aStamina: §a" + (Math.round(RStaminaClient.clientStoredStamina)) + "§7/" + (Math.round(RStaminaClient.clientStoredMaxStamina))), x, y, 16777215);
+            } else if ((Math.round(RStaminaClient.clientStoredStamina)) >= 24.0 && (Math.round(RStaminaClient.clientStoredStamina)) < (Math.round(RStaminaClient.clientStoredMaxStamina))) {
                 textRenderer.drawWithShadow(matrixStack, Text.literal("§2Stamina: §a" + (Math.round(RStaminaClient.clientStoredStamina)) + "§7/" + (Math.round(RStaminaClient.clientStoredMaxStamina))), x, y, 16777215);
             } else if ((Math.round(RStaminaClient.clientStoredStamina)) < 24.0 && (Math.round(RStaminaClient.clientStoredStamina)) > 12) {
                 textRenderer.drawWithShadow(matrixStack, Text.literal("§2Stamina: §e" + (Math.round(RStaminaClient.clientStoredStamina)) + "§7/" + (Math.round(RStaminaClient.clientStoredMaxStamina))), x, y, 16777215);
@@ -45,6 +45,8 @@ public class StaminaHudOverlay implements HudRenderCallback {
             } else if ((Math.round(RStaminaClient.clientStoredStamina)) <= 0) {
                 textRenderer.drawWithShadow(matrixStack, Text.literal("§2Stamina: §c" + (Math.round(RStaminaClient.clientStoredStamina)) + "§7/" + (Math.round(RStaminaClient.clientStoredMaxStamina))), x, y, 16777215);
             }
+
+            textRenderer.drawWithShadow(matrixStack, Text.literal("§eEnergy: §f" + ((float)RStaminaClient.clientStoredEnergy) + "%"), x, y + 10, 16777215);
 
         }
 

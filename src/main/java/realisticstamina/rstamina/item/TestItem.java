@@ -9,8 +9,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import realisticstamina.rstamina.RStaminaClient;
-import realisticstamina.rstamina.RStaminaMod;
 import realisticstamina.rstamina.networking.NetworkingPackets;
 
 public class TestItem extends Item {
@@ -28,8 +26,8 @@ public class TestItem extends Item {
             //playerEntity.sendMessage(Text.literal("hello"));
             //ClientPlayNetworking.send(NetworkingPackets.TEST_PACKET_ID, PacketByteBufs.create());
 
-            ClientPlayNetworking.send(NetworkingPackets.REQUEST_TESTDATA_PACKET_ID, PacketByteBufs.create());
-            RStaminaMod.LOGGER.info(playerEntity.getName().getString() + " : " + RStaminaClient.clientStoredTestPlayerData);
+            ClientPlayNetworking.send(NetworkingPackets.RESET_PLAYERSTATE_C2S_PACKET_ID, PacketByteBufs.create());
+            //RStaminaMod.LOGGER.info(playerEntity.getName().getString() + " : " + RStaminaClient.clientStoredTestPlayerData);
 
         }
 

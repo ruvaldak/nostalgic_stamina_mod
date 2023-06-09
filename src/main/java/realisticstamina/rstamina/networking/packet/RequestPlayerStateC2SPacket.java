@@ -17,6 +17,8 @@ public class RequestPlayerStateC2SPacket {
         PacketByteBuf sendingdata = PacketByteBufs.create();
         sendingdata.writeDouble(ServerState.getPlayerState(player).stamina); //stamina
         sendingdata.writeDouble(ServerState.getPlayerState(player).maxStamina); //max stamina
+        sendingdata.writeDouble(ServerState.getPlayerState(player).energy); //total stamina
+        sendingdata.writeDouble(ServerState.getPlayerState(player).totalStamina); //total stamina
 
         ServerPlayNetworking.send(player, NetworkingPackets.SEND_PLAYERSTATE_S2C_PACKET_ID, sendingdata);
 
