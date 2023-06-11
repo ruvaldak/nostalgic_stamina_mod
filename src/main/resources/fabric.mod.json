@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "rstamina",
+	"id": "nostalgicstamina",
 	"version": "${version}",
 	"name": "Realistic Stamina",
 	"description": "Adds stamina in a realistic sorta way.",
@@ -12,24 +12,24 @@
 		"sources": ""
 	},
 	"license": "MIT",
-	"icon": "assets/rstamina/icon.png",
+	"icon": "assets/nostalgicstamina/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"realisticstamina.rstamina.RStaminaMod"
+			"com.ruvaldak.nostalgicstamina.NostalgicStaminaMod"
 		],
 		"client": [
-			"realisticstamina.rstamina.RStaminaClient"
+			"com.ruvaldak.nostalgicstamina.NostalgicStaminaClient"
 		],
 		"modmenu": [
-			"realisticstamina.rstamina.config.ModMenuIntegration"
+			"com.ruvaldak.nostalgicstamina.config.ModMenuIntegration"
 		],
 		"preLaunch": [
-			"realisticstamina.rstamina.NStaminaPreLaunch"
+			"com.ruvaldak.nostalgicstamina.NostalgicStaminaPreLaunch"
 		]
 	},
 	"mixins": [
-		"rstamina.mixins.json"
+		"nostalgicstamina.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.15",

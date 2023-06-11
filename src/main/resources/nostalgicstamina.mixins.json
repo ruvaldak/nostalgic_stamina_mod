@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.ruvaldak.nostalgicstamina.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+	],
+	"client": [
+		"InGameHudMixin",
+		"PlayerEntityMixin",
+		"LivingEntityMixin",
+		"ClientPlayerEntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
