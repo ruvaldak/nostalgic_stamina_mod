@@ -3,7 +3,12 @@
 	"package": "realisticstamina.rstamina.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+	],
+	"client": [
+		"InGameHudMixin",
+		"PlayerEntityMixin",
+		"LivingEntityMixin",
+		"ClientPlayerEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -15,10 +15,9 @@ public class RequestPlayerStateC2SPacket {
     public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
 
         PacketByteBuf sendingdata = PacketByteBufs.create();
-        sendingdata.writeDouble(ServerState.getPlayerState(player).stamina); //stamina
-        sendingdata.writeDouble(ServerState.getPlayerState(player).maxStamina); //max stamina
-        sendingdata.writeDouble(ServerState.getPlayerState(player).energy); //total stamina
-        sendingdata.writeDouble(ServerState.getPlayerState(player).totalStamina); //total stamina
+        sendingdata.writeDouble(ServerState.getPlayerState(player).getStamina()); //stamina
+        sendingdata.writeDouble(ServerState.getPlayerState(player).getMaxStamina()); //max stamina
+        sendingdata.writeDouble(ServerState.getPlayerState(player).getCountdown());
 
         ServerPlayNetworking.send(player, NetworkingPackets.SEND_PLAYERSTATE_S2C_PACKET_ID, sendingdata);
 
