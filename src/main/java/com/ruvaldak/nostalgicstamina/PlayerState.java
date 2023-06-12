@@ -2,11 +2,10 @@ package com.ruvaldak.nostalgicstamina;
 import com.ruvaldak.nostalgicstamina.registry.ConfigRegistry;
 
 public class PlayerState {
-    //public int testplayerdata = 200;
-    
+    private long storedSystemMillis = System.currentTimeMillis();
     private double  maxStamina = ConfigRegistry.CONFIG.maxStamina,
                     stamina    = 1000000,
-                    countdown  = 0;
+                    storedCooldownTime = 0;
 
     public double getMaxStamina() {
         return maxStamina;
@@ -16,8 +15,12 @@ public class PlayerState {
         return stamina;
     }
 
-    public double getCountdown() {
-        return countdown;
+    public double getStoredCooldownTime() {
+        return storedCooldownTime;
+    }
+
+    public long getStoredSystemMillis() {
+        return storedSystemMillis;
     }
 
     public void setMaxStamina(double maxStamina) {
@@ -28,7 +31,11 @@ public class PlayerState {
         this.stamina = stamina;
     }
 
-    public void setCountdown(double countdown) {
-        this.countdown = countdown;
+    public void setStoredCooldownTime(double time) {
+        storedCooldownTime = time;
+    }
+
+    public void updateStoredSystemMillis() {
+        storedSystemMillis = System.currentTimeMillis();
     }
 }

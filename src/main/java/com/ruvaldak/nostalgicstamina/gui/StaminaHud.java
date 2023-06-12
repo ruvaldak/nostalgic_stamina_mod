@@ -27,23 +27,21 @@ public class StaminaHud {
             RenderSystem.setShaderTexture(0, HudTexturesIdentifiers.ICONS);
 
             //try to translate floating point stamina into a 20 segment status bar
-
             //int staminaValue = (RStaminaClient.getClientStoredStamina() <= Math.nextUp(0)) ? 0 : (int)Math.min(20.0d, Math.ceil(RStaminaClient.getClientStoredStamina()));
-
             //int staminaValue = (int)(RStaminaClient.getClientStoredStamina()<10D ?Math.ceil(RStaminaClient.getClientStoredStamina()):Math.floor(Math.nextUp(RStaminaClient.getClientStoredStamina())));
-
             
-            int staminaValue = (int)Math.nextUp(Math.ceil((NostalgicStaminaClient.getClientStoredStamina()/21D)*20D)); //this is very cursed but it works 90% of the time
-            //current downsides are that some values don't round very well, like 1.1 become 2, 13.66 becomes 14, and 19.96 becomes 20. 
-            //visually, though, it looks consistent with expectations and increases/decreases linearly.
+            int staminaValue = (int)Math.nextUp(Math.ceil((NostalgicStaminaClient.getClientStoredStamina()/21D)*20D)); 
+            /* this is very cursed but it works 90% of the time
+            current downsides are that some values don't round very well, like 1.1 become 2, 13.66 becomes 14, and 19.96 becomes 20. 
+            visually, though, it looks consistent with expectations and increases/decreases linearly. */
 
 
             // Create the Stamina Bar
             // empty stamina segment
             for (int i = 0; i < 10; i++) {
                 DrawableHelper.drawTexture(matrixStack,
-                        (width + 82 - (i * 9) + i) + ConfigRegistry.CONFIG.hud_x,
-                        (height - 49) + ConfigRegistry.CONFIG.hud_y,
+                        (ConfigRegistry.CONFIG.hud_right) ? (width + 82 - (i * 9) + i) : (width - 91 + (i * 9) - i),
+                        (height - 39) - (ConfigRegistry.CONFIG.hud_row * 10),
                         0,
                         0,
                         9,
@@ -57,8 +55,8 @@ public class StaminaHud {
                 if (staminaValue != 0) {
                     if (((staminaValue + 1) / 2) > i) {
                         DrawableHelper.drawTexture(matrixStack,
-                                (width + 82 - (i * 9) + i) + ConfigRegistry.CONFIG.hud_x,
-                                (height - 49) + ConfigRegistry.CONFIG.hud_y,
+                                (ConfigRegistry.CONFIG.hud_right) ? (width + 82 - (i * 9) + i) : (width - 91 + (i * 9) - i),
+                                (height - 39) - (ConfigRegistry.CONFIG.hud_row * 10),
                                 9,
                                 9,
                                 9,
@@ -76,8 +74,8 @@ public class StaminaHud {
                 if (staminaValue != 0) {
                     if ((staminaValue / 2) > i) {
                         DrawableHelper.drawTexture(matrixStack,
-                                (width + 82 - (i * 9) + i) + ConfigRegistry.CONFIG.hud_x,
-                                (height - 49) + ConfigRegistry.CONFIG.hud_y,
+                                (ConfigRegistry.CONFIG.hud_right) ? (width + 82 - (i * 9) + i) : (width - 91 + (i * 9) - i),
+                                (height - 39) - (ConfigRegistry.CONFIG.hud_row * 10),
                                 0,
                                 9,
                                 9,

@@ -27,11 +27,11 @@ public class NetworkingPackets {
         ClientPlayNetworking.registerGlobalReceiver(SEND_PLAYERSTATE_S2C_PACKET_ID, (client, handler, buf, responseSender) -> {
             double stamina = buf.readDouble();
             double maxStamina = buf.readDouble();
-            int countdown = buf.readInt();
+            double cooldown = buf.readDouble(); 
             client.execute(() -> {
                 NostalgicStaminaClient.setClientStoredStamina(stamina);
                 NostalgicStaminaClient.setClientStoredMaxStamina(maxStamina);
-                NostalgicStaminaClient.setClientStoredCountdown(countdown);
+                NostalgicStaminaClient.setClientStoredCooldownTime(cooldown);
             });
         });
     }

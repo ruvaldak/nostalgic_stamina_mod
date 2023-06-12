@@ -18,7 +18,8 @@ public class ResetPlayerStateC2SPacket {
 
         playerstate.setMaxStamina(ConfigRegistry.CONFIG.maxStamina);
         playerstate.setStamina(playerstate.getMaxStamina());
-        playerstate.setCountdown(0);
+        playerstate.setStoredCooldownTime(0);
+        playerstate.updateStoredSystemMillis();
         serverState.markDirty();
 
     }

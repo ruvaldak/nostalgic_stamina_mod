@@ -12,16 +12,6 @@ public class NostalgicStaminaMod implements ModInitializer {
 	public static final String modid = "nostalgicstamina";
 	public static final Logger LOGGER = LoggerFactory.getLogger(modid);
 
-	private static long clientStoredSystemMillis = System.currentTimeMillis();
-
-	public static long getClientStoredSystemMillis() {
-        return clientStoredSystemMillis;
-    }
-
-	public static void updateClientStoredSystemMillis() {
-        clientStoredSystemMillis = System.currentTimeMillis();
-    }
-
 	@Override
 	public void onInitialize() {
 		//networking

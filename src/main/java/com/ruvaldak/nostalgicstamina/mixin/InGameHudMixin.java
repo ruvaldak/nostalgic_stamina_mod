@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import com.ruvaldak.nostalgicstamina.registry.ConfigRegistry;
 
 @Environment(EnvType.CLIENT)
 @Mixin(InGameHud.class)
@@ -48,6 +49,6 @@ public abstract class InGameHudMixin {
     // Modify the heart return value, so the air bar doesn't overlap with the thirst bar
     @Inject(method = "getHeartRows", at = @At(value = "HEAD"), cancellable = true)
     private void staminaMod$fixStaminaBarPosition(int heartCount, CallbackInfoReturnable<Integer> cir) {
-        cir.setReturnValue((int) Math.ceil((double) heartCount / 10.0D) + 1);
+        cir.setReturnValue((int) Math.ceil((double) heartCount / 10.0D) + ((ConfigRegistry.CONFIG.hud_row == 1 && ConfigRegistry.CONFIG.hud_right) ? 1 : 0));
     }
 }

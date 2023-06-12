@@ -10,12 +10,12 @@ public class StaminaConfig implements ConfigData {
     // Hud X
     @ConfigEntry.Category("hud_position_settings")
     @ConfigEntry.Gui.Tooltip(count = 3)
-    public int hud_x = 0;
+    public boolean hud_right = true;
 
     // Hud X
     @ConfigEntry.Category("hud_position_settings")
     @ConfigEntry.Gui.Tooltip(count = 3)
-    public int hud_y = 0;
+    public int hud_row = 1;
 
     @ConfigEntry.Category("stamina_settings")
     @ConfigEntry.Gui.Tooltip(count = 3)

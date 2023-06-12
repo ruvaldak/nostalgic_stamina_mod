@@ -13,7 +13,7 @@ public class NostalgicStaminaClient implements ClientModInitializer {
     //these numbers are only used to display stats on the client. they do nothing else
     private static double clientStoredStamina = 0;
     private static double clientStoredMaxStamina = 0;
-    private static double clientStoredCountdown = 0;
+    private static double clientStoredCooldownTime = 0;
 
     public static double getClientStoredStamina() {
         return clientStoredStamina;
@@ -21,8 +21,8 @@ public class NostalgicStaminaClient implements ClientModInitializer {
     public static double getClientStoredMaxStamina() {
         return clientStoredMaxStamina;
     }
-    public static double getClientStoredCountdown() {
-        return clientStoredCountdown;
+    public static double getClientStoredCooldownTime() {
+        return clientStoredCooldownTime;
     }
 
     public static void setClientStoredStamina(double stamina) {
@@ -33,8 +33,8 @@ public class NostalgicStaminaClient implements ClientModInitializer {
         clientStoredMaxStamina = maxStamina;
     }
 
-    public static void setClientStoredCountdown(double countdown) {
-        clientStoredCountdown = countdown;
+    public static void setClientStoredCooldownTime(double countdown) {
+        clientStoredCooldownTime = countdown;
     }
 
     @Override
